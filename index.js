@@ -61,10 +61,10 @@ async function createNote() {
 // Displays Front contact information.
 function displayContactInfo (display_name = "No Contact", handle = "-") {
   const nameElement = document.getElementById("name");
-  //const handleElement = document.getElementById("handle");
+  const handleElement = document.getElementById("handle");
 
   nameElement.textContent = display_name;
-  //handleElement.textContent = handle;
+  handleElement.textContent = handle;
 }
 
 // Displays mocked CRM Info.
