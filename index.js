@@ -34,9 +34,9 @@ Front.contextUpdates.subscribe(context => {
         console.log('Error: ', error);
       }
 
-      assignButton.addEventListener('click', function _assign() {
-        Front.assign(context.teammate.id)
-      });
+      //assignButton.addEventListener('click', function _assign() {
+      //  Front.assign(context.teammate.id)
+      //});
 
       break;
     case 'multiConversations':
