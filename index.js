@@ -10,7 +10,9 @@ Front.contextUpdates.subscribe(context => {
   displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
 
   var messageRecipient = document.getElementById('messageRecipient');
-  messageRecipient.innerHTML = 'Displaying ' + context.conversation.recipient.contact;
+  messageRecipient.innerHTML = 'Displaying ' + context.conversation.recipient.contact.name;
+
+  console.log('Contact:', context.conversation.recipient.contact.customAttributes);
 
   assignButton.removeEventListener('click', _assign);
 
