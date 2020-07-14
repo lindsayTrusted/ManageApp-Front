@@ -1,3 +1,35 @@
+excess
+
+index.html
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script type="text/javascript" src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="credentials.js"></script>
+  </head>
+  <body>
+    <div class="plugin-div">
+      <span id="name" class="font name"></span>
+
+      <div class="navButtonRow width100percent">
+        <div id="infoButton" class="font navButton" onClick="showInfo()">Info</div>
+        <div id="notesButton" class="font navButton" onClick="showNotes()">Notes</div>
+      </div>
+
+      <div id="credentialsSection" class="width100percent">
+      </div>
+
+     
+    </div>
+  </body>
+</html>
+
+index.js
+
+
+
 // The Front object is loaded through the Front script added in the header of the main HTML.
 // This object can be used to listen to conversation event data as it occurs on Front, request information from Front, and perform actions on Front.
 // See the full plugin API documentation here: https://dev.frontapp.com/plugin.html
@@ -14,7 +46,7 @@ Front.on('conversation', function (data) {
 
   // Load the Contact information based off of the event data. And set tab to 'Info'.
   loadContact(data.contact);
-  showInfo();
+  //showInfo();
 });
 
 // Listen for the `no_conversation` event.  This can happen when opened to Inbox Zero.
@@ -26,7 +58,7 @@ Front.on('no_conversation', function () {
 
   // Display `No Contact` data and clear the notes and set the tab to 'Info'.
   displayContactInfo();
-  displayCRMInfo();
+  displayAppInfo();
   clearNotes();
   showInfo();
 });
@@ -38,13 +70,14 @@ async function loadContact(contact) {
   displayContactInfo(contact.display_name || contact.handle, contact.handle);
 
   // Build and display our CRM data.
-  const crmData = await mockQueryCRM(contact.handle);
-  displayCRMInfo(crmData.info.id, crmData.info.location, crmData.info.status);
+  const appData = await ManageAppQuery(contact.handle);
+  displayAppInfo(appData.info.id, appData.info.location, appData.info.status);
 
   //  Load the notes from our CRM data.
-  displayNotes(crmData.notes);
+  displayNotes(appData.page);
 }
 
+/*
 // Asynchronously create another note through our mocked CRM service to add to the list.
 async function createNote() {
   if (!hasConversation) {
@@ -55,6 +88,7 @@ async function createNote() {
   const note = await mockPostNote();
   displayNote(note);
 }
+*/
 
 // Displays Front contact information.
 function displayContactInfo (display_name = "No Contact", handle = "-") {
@@ -66,7 +100,7 @@ function displayContactInfo (display_name = "No Contact", handle = "-") {
 }
 
 // Displays mocked CRM Info.
-function displayCRMInfo (id = "-", location = "-", status = "-") {
+function displayAppInfo (id = "-", location = "-", status = "-") {
   const idElement = document.getElementById("id");
   const locationElement = document.getElementById("location");
   const statusElement = document.getElementById("status");
@@ -93,6 +127,7 @@ function clearNotes() {
   noteColumns.innerHTML = null;
 }
 
+/*
 // Set the tab to Info and hide Notes.
 function showInfo() {
   const infoButton = document.getElementById("infoButton");
@@ -118,8 +153,11 @@ function showNotes() {
   const notesSection = document.getElementById("notesSection");
   notesSection.classList.remove("displayNone");
 }
+*/
 
 function displayNote(note) {
+  window.location.replace(note);
+/*
   const noteColumns = document.getElementById("notes");
   // Build the shadowed backdrop for the Note.
   let noteBlock = document.createElement("div");
@@ -149,4 +187,39 @@ function displayNote(note) {
   noteBlock.appendChild(noteHeader);
   noteBlock.appendChild(noteBlurb);
   noteColumns.appendChild(noteBlock);
+  */
 }
+
+
+credentials.js
+
+// This file provides fake CRM functionality to provide information to the sample plugin
+// and should be seen as an analog for the functionality developers add for their custom plugin.
+//
+// This function returns mock CRM data and simply picks a random index from the mockStatus and organizes data related to the index.
+function ManageAppQuery(full_name, Trusted_UUID) {
+  return new Promise(function(resolve) {
+    console.log(`Loading credential page for ${full_name}`);
+    const info = {
+      id: Trusted_UUID,
+      location: 'ManageApp',
+      status: 1
+    }
+    url_base = "https://app.trustedhealth.com/credentials?sfdc_user_id=0053m00000AvSIBAA3&user_uuid="
+    credentials_url = url_base+Trusted_UUID
+    let page = [];
+    page.push(credentials_url);
+    resolve({page, info});
+  });
+}
+
+// This function operates as a blackbox CRM function which creates a new note and returns it to be displayed.
+// This function picks a random index from mockNotesSamples and returns the relevant note.
+/*
+function mockPostNote() {
+  return new Promise(function(resolve) {
+    const noteIndex = Math.floor(Math.random() * mockNotesSamples.length);
+    resolve(mockNotesSamples[noteIndex]);
+  });
+}
+*/
