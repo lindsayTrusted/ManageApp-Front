@@ -46,8 +46,12 @@ Front.contextUpdates.subscribe(context => {
       console.error(`Unsupported context type: ${context.type}`);
       break;
   }
+
+  console.log("inside switch")
+
 });
 
+console.log("outside switch")
 loadCredentials(globalUser);
 
 
