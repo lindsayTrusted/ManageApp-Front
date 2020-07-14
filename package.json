@@ -1,0 +1,24 @@
+{
+  "name": "ManageApp-Front",
+  "version": "1.0.0",
+  "description": "ManageApp Plugin for FrontApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "lindsay-rawitscher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lindsayTrusted/ManageApp-Front/issues"
+  },
+  "homepage": "https://github.com/lindsayTrusted/ManageApp-Front#readme",
+  "engines": {
+    "node": "v12.18.2"
+  }
+}
