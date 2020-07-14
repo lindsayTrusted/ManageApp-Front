@@ -43,6 +43,7 @@ Front.contextUpdates.subscribe(context => {
   }
 });
 
+/*
 Front.contactUpdates.subscribe(contact => {
   console.log('Contact:', contact);
 
@@ -52,6 +53,7 @@ Front.contactUpdates.subscribe(contact => {
   messageRecipient.innerHTML = 'Hello ' + contact.name;
 
 });
+*/
 
 function openUrl() {
   Front.openUrl('https://frontapp.com');
