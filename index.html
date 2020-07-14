@@ -1,14 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="app">
+  
   <head>
+    <title>Front Credential Plugin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="index.css" />
-    <script type="text/javascript" src="https://dl.frontapp.com/libs/plugin-sdk-1.0.1.min.js"></script>
+    <script type="text/javascript" src="//dl.frontapp.com/libs/plugin-sdk-1.0.1.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="credentials.js"></script>
   </head>
+  
   <body>
-    <div class="plugin-div">
-      <span id="name" class="font name">Lindsay</span>
-      <span id="handle" class="font handle">-</span>
-    </div>
+   <h3 id="frontTeammate"></h3>
+
+    <ul>
+
+    <li><button onClick="assign()">Assign (to me)</button></li>
+    <li><button onClick="unassign()">Unassign</button></li>
+
+
+    <li><button onClick="insertDraftReply()">Insert Draft Reply</button></li>
+    <li><button onClick="insertBasicDraft()">Insert Basic Draft</button></li>
+
+
+    <li><button onClick="listTags()">List Tags</button></li>
+
+
+    <li><button onclick="openUrl()">Open External URL</button></li>
+    <li><button onclick="openUrlInPopup()">Open Internal URL in Popup</button></li>
+
+
+    <li><button onClick="peerReviewDraft()">Peer Review Draft</button></li>
+    <li><button id="assign">Assign</button></li>
+    </ul>
+
   </body>
+
 </html>
