@@ -6,7 +6,9 @@ const port = process.env.PORT || 3000
 
 app.get('/', function(request, response){
 	response.statusCode = 200;
+	console.log(__dirname + '/index.html');
     response.sendFile(__dirname + '/index.html');
+    console.log(__dirname + '/index.html');
 });
 
 //const server = http.createServer((req, res) => {
