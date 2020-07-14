@@ -16,7 +16,7 @@ Front.contextUpdates.subscribe(context => {
   messageRecipient.innerHTML = 'Displaying ' + globalUser.name;
   console.log('Contact:', globalUser);
 
-  assignButton.removeEventListener('click', _assign);
+  //assignButton.removeEventListener('click', _assign);
 
   switch(context.type) {
     case 'noConversation':
