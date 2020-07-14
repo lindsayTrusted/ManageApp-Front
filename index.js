@@ -4,7 +4,6 @@
 
 let globalContext;
 let globalContact;
-const assignButton = document.getElementById('assign');
 
 Front.contextUpdates.subscribe(context => {
   console.log('Context:', context);
@@ -22,7 +21,6 @@ Front.contactUpdates.subscribe(contact => {
   var messageRecipient = document.getElementById('messageRecipient');
   messageRecipient.innerHTML = 'Hello ' + contact.name;
 
-  assignButton.removeEventListener('click', _assign);
 
   switch(context.type) {
     case 'noConversation':
@@ -39,11 +37,6 @@ Front.contactUpdates.subscribe(contact => {
       } catch (error) {
         console.log('Error: ', error);
       }
-
-      assignButton.addEventListener('click', function _assign() {
-        Front.assign(context.teammate.id)
-      });
-
       break;
     case 'multiConversations':
       console.log('Multiple conversations selected', context.conversations);
