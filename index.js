@@ -10,17 +10,8 @@ Front.contextUpdates.subscribe(context => {
 
   globalContext = context;
 
-Front.contactUpdates.subscribe(contact => {
-  console.log('Contact:', contact);
-
-  globalContact = contact;
-
   var displayTeammate = document.getElementById('frontTeammate');
   displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
-
-  var messageRecipient = document.getElementById('messageRecipient');
-  messageRecipient.innerHTML = 'Hello ' + contact.name;
-
 
   switch(context.type) {
     case 'noConversation':
@@ -37,6 +28,11 @@ Front.contactUpdates.subscribe(contact => {
       } catch (error) {
         console.log('Error: ', error);
       }
+
+      assignButton.addEventListener('click', function _assign() {
+        Front.assign(context.teammate.id)
+      });
+
       break;
     case 'multiConversations':
       console.log('Multiple conversations selected', context.conversations);
@@ -45,6 +41,16 @@ Front.contactUpdates.subscribe(contact => {
       console.error(`Unsupported context type: ${context.type}`);
       break;
   }
+});
+
+Front.contactUpdates.subscribe(contact => {
+  console.log('Contact:', contact);
+
+  globalContact = contact;
+
+  var messageRecipient = document.getElementById('messageRecipient');
+  messageRecipient.innerHTML = 'Hello ' + contact.name;
+
 });
 
 function openUrl() {
