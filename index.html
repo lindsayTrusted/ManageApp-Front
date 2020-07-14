@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html ng-app="app">
-  
-  <head>
-    <title>Front Credential Plugin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="index.css" />
-    <script type="text/javascript" src="//dl.frontapp.com/libs/plugin-sdk-1.0.1.min.js"></script>
-    <script type="text/javascript" src="credentials.js"></script>
-    <script type="text/javascript" src="index.js"></script>
-  </head>
-  
-  <body>
-   <button class="navButton font rowItem" onClick="window.location.reload();">Refresh Page</button>
-   <h3 id="test round">test19</h3>
-   <h3 id="frontTeammate"></h3>
-   <h3 id="messageRecipient"></h3>
+	
+	<head>
+		<title>Front Credential Plugin</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<script type="text/javascript" src="//dl.frontapp.com/libs/plugin-sdk-1.0.1.min.js"></script>
+		<script type="text/javascript" src="credentials.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</head>
+	
+	<body>
+	 <div class="plugin-div">
+		<span id="frontTeammate" class="font name"></span>
+		<span id="messageRecipient" class="font handle">-</span>
 
+		<div class="navButtonRow width100percent">   
+				<div id="RefreshButton" class="font navButton">
+					<button onClick="window.location.reload();">Refresh</button>
+				</div>
+				<div id="testRound" class="font navButton">
+					<p>test20</p>
+				</div>
+		</div>
 
-    <ul>
-        <li>One</li>
-        <li>Two</li>
-    <!--<li><button onclick="openUrl()">Open External URL</button></li>-->
+		<div id="infoSection" class="width100percent">
+				<div class="column">
+					<object type="text/html" data="http://validator.w3.org/" width="800px" height="600px" style="overflow:auto;border:5px ridge blue">
+					</object>
+				</div>
+		</div>
 
-    </ul>
-
-  </body>
+		</div>
+	</body>
 
 </html>
