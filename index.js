@@ -63,8 +63,6 @@ function openUrlInPopup() {
 }
 
 
-
-
 async function getMessage() {
   console.log('Called getMessage()');
   let list = await Front.listMessages();
