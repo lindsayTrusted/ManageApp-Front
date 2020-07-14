@@ -12,7 +12,7 @@ Front.contextUpdates.subscribe(context => {
   var messageRecipient = document.getElementById('messageRecipient');
   messageRecipient.innerHTML = 'Displaying ' + context.conversation.recipient.contact.name;
 
-  console.log('Contact:', context.conversation);
+  console.log('Contact:', context.conversation.recipient.contact);
 
   assignButton.removeEventListener('click', _assign);
 
