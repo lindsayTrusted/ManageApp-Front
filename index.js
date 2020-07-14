@@ -48,6 +48,9 @@ Front.contextUpdates.subscribe(context => {
   }
 });
 
+loadCredentials(globalUser);
+
+
 function assign(context) {
   console.log('context in assign() method');
   console.log(context);
